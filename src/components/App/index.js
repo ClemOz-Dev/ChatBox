@@ -8,7 +8,7 @@ import ChatList from 'src/components/ChatList';
 import Conversation from 'src/components/Conversation';
 import Footer from 'src/components/Footer';
 import Settings from 'src/containers/Settings';
-import SettingsRegistration from '../SettingsRegistration';
+import SettingsRegistration from 'src/containers/SettingsRegistration';
 
 // == Composant
 const App = () => (

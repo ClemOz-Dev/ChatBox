@@ -1,6 +1,7 @@
 import {
   CONNECT_USER,
   UPDATE_FIELD,
+  SET_ERROR_MESSAGE,
 } from 'src/actions/auth';
 
 const initialState = {
@@ -8,17 +9,26 @@ const initialState = {
   nickname: '',
   email: '',
   password: '',
+  errorMessage: '',
 };
 
 function authReducer(state = initialState, action) {
   switch (action.type) {
+
     case CONNECT_USER:
       // console.log('action', action);
       return {
         ...state,
         password: '',
         nickname: action.nickname,
-        id: action.id       
+        id: action.id
+      };
+
+    case SET_ERROR_MESSAGE:
+      // console.log('action', action);
+      return {
+        ...state,
+        errorMessage: action.message
       };
 
     case UPDATE_FIELD:
@@ -33,6 +43,12 @@ function authReducer(state = initialState, action) {
         return {
           ...state,
           password: action.newValue,
+        };
+      }
+      if (action.identifier === 'nickname') {
+        return {
+          ...state,
+          nickname: action.newValue,
         };
       }
 

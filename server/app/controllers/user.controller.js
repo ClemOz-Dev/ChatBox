@@ -16,22 +16,24 @@ exports.create = (req, res) => {
     email: req.body.email,
     nickname: req.body.nickname,
     password: req.body.password,
-    picture: req.body.picture,
-    location: req.body.location,
-    minor: req.body.minor,
-    role: req.body.role,
   });
 
   // Save User in the database
   User.create(user, (err, data) => {
-    if (err)
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the User."
-      });
+    if (err) {
+      if (err.kind === "already_registered") {
+        res.status(409).send({
+          message: `Cette adresse email est déjà liée à un compte.`
+        });
+      } else {
+        res.status(500).send({
+          message: "Erreur serveur"
+        });
+      }
+    }
     else res.send(data);
   });
 };
-
 // ----------------------------------------------------- //
 
 // Retrieve all Users from the database.
@@ -83,7 +85,7 @@ exports.findOneByEmail = (req, res) => {
     }
     else {
       const token = jwt.sign({ id: data.id, user_mail: data.email }, config.TOKEN_SECRET);
-      res.header("auth-token", token).send({ "id": data.id, "nickname": data.nickname, "token": token });
+      res.status(200).header("auth-token", token).send({ "id": data.id, "nickname": data.nickname, "token": token });
     }
   });
 };

@@ -3,7 +3,6 @@ module.exports = app => {
 
   app.post("/login", user.findOneByEmail);
 
-  // Retrieve all Users
-  app.get("/login2", user.findAll);
+  app.post("/inscription", user.create);
 
 };

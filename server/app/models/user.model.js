@@ -5,28 +5,40 @@ const User = function (user) {
   this.email = user.email;
   this.nickname = user.nickname;
   this.password = user.password;
-  this.picture = user.picture;
-  this.location = user.location;
-  this.minor = user.minor;
-  this.role = user.role;
 };
 
 User.create = (newUser, result) => {
-  sql.query("INSERT INTO user SET ?", newUser, (err, res) => {
+  console.log(newUser.email);
+  sql.query(`SELECT * FROM user WHERE email = "${newUser.email}"`, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(err, null);
       return;
     }
+    console.log("RESULT:", res);
+  
+    if (!res.length) {
 
-    console.log("created user: ", {
-      id: res.insertId,
-      ...newUser
-    });
-    result(null, {
-      id: res.insertId,
-      ...newUser
-    });
+      sql.query("INSERT INTO user SET ?", newUser, (err, res) => {
+        if (err) {
+          console.log("error: ", err);
+          result(err, null);
+          return;
+        }
+
+        console.log("created user: ", {
+          id: res.insertId,
+          ...newUser
+        });
+        result(null, {
+          message:'Compte créé avec succès !'
+        });
+      });
+    }else{
+      result({
+        kind: "already_registered"
+      }, null);
+    }
   });
 };
 

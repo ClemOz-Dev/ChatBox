@@ -1,14 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
+import validator from 'validator'
+import Popup from 'reactjs-popup';
 
 import Field from 'src/components/Field';
 import './settingsRegistration.scss';
 import logo from 'src/assets/Chatbox.svg';
 
-const SettingsRegistration = ({ email, password, submitForm, updateField }) => {
+const SettingsRegistration = ({ email, password, nickname, submitForm, updateField, errorMessage, setErrorMessage }) => {
+  const [open, setOpen] = useState(false);
+
+  const closeModal = () => {
+    setOpen(false);
+    setErrorMessage('');
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    submitForm();
+    if (validator.isStrongPassword(password, {
+      minLength: 8, minLowercase: 1,
+      minUppercase: 1, minNumbers: 1, minSymbols: 1
+    })) {
+      submitForm();
+    } else {
+      /*  setOpen(o => !o); */
+      setErrorMessage("Mot de passe: au moins 8 caractères, dont 1 chiffre, 1 majuscule, 1 minuscule, 1 caractère spécial")
+    }
+    if (!errorMessage) {
+      setOpen(o => !o);
+    }
   };
+
   return (
     <div className="settingsRegistration">
       <img className="settingsRegistration--logo" src={logo} />
@@ -36,8 +57,26 @@ const SettingsRegistration = ({ email, password, submitForm, updateField }) => {
             updateField(identifier, newValue);
           }}
         />
-        <button className="settingsRegistration--button" type="submit">Connexion</button>
-        <p className="settingsRegistration--ToRegister">Pas encore de compte ? Inscris-toi !</p>
+
+        <Popup open={open} closeOnDocumentClick onClose={closeModal}>
+          <div className="modal">
+            <a className="close" onClick={closeModal}>&times;
+          </a>{errorMessage}
+          </div>
+        </Popup>
+
+        <Field
+          type="text"
+          identifier="nickname"
+          placeholder=""
+          label="Pseudonyme"
+          value={nickname}
+          changeField={(identifier, newValue) => {
+            updateField(identifier, newValue);
+          }}
+        />
+        <button className="settingsRegistration--button" type="submit">Envoyer</button>
+        <p className="settingsRegistration--ToRegister">Déjà inscrit ? Connecte toi !</p>
       </form>
 
     </div>
