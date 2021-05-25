@@ -1,0 +1,59 @@
+@use 'src/styles/vars';
+
+.conversation {  
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 1%; 
+  
+
+  .conversation--messages-container {
+    padding: 1%;
+    width: 100%;
+    height: 85%;
+    background-color: vars.$verylight-blue;
+    overflow-y: auto;
+    border-radius: 15px;
+    overflow-x: hidden;
+
+    ::-webkit-scrollbar {
+      display: none;
+    }
+
+    .message {
+      margin-bottom: 2rem;
+      text-align: center;
+      float: left;
+      width: 70%;
+
+      .message--from {
+        width: 100%;
+        font-weight: bold;
+        color: black;  
+        padding: 3px 10px;
+        font-family: vars.$secondary-font;
+        width: max-content;    
+        float: left;   
+        
+      }
+
+      .message--content {
+        width: 100%;
+        float: left;
+        padding: 1.2rem 1.3rem;        
+        color: black;
+        background-color: vars.$orange;
+        border-radius: 1.6rem;    
+        font-family: vars.$tertiary-font;
+      }
+
+      &.message--own {
+        float: right;
+
+        .message--from {
+          float: right;         
+        }
+      }
+    }
+  }
+}

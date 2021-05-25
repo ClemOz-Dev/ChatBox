@@ -1,0 +1,40 @@
+// Import Fonts
+
+// Quicksand
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+// Baloo Tamma 2
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500;600;700;800&display=swap');
+
+// Montserrat Alternates
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+// Knewave
+@import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
+
+$knewave : 'Knewave',
+sans-serif;
+
+// Variables for use Fonts
+
+// Quicksand
+$primary-font: 'Quicksand',
+sans-serif;
+// Baloo Tamma 2
+$secondary-font: 'Baloo Tamma 2',
+cursive;
+// Montserrat Alternates
+$tertiary-font: 'Montserrat',
+sans-serif;
+
+
+// Variables for use Colors
+
+// Blue variations
+$verylight-blue: #EEF7FB;
+$light-blue: #97DCED;
+$blue: #8DC6E2;
+
+// Yellow/Orange
+$yellow: #FFE299;
+$orange: #FFC685;

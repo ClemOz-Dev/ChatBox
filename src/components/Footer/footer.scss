@@ -1,0 +1,20 @@
+@use 'src/styles/vars';
+
+.footer {  
+  width: 95%;
+  height: 5%;
+  margin: auto;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  vertical-align: middle;
+  display: flex;
+  justify-content: space-around;
+
+  a {
+    color: red;
+    line-height: 30px;
+  }
+}

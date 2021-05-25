@@ -1,0 +1,8 @@
+@use 'reset';
+@use 'vars';
+
+body {
+  font-family: vars.$knewave;
+  background-image: url('../assets/Quantum-Gradient.svg');
+  background-size: cover;
+}

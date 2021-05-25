@@ -1,0 +1,39 @@
+.field {
+  width: 80%;
+  height: 10%;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+
+  .label {
+    transition: all 0.5s ease-in-out;
+  }
+
+  .input {
+    border: 0;
+    border-bottom: 1px solid #555;
+    background: transparent;
+    padding: 8px 0 5px 0;
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+
+    &::placeholder {
+      font-style: italic;
+    }
+  }
+
+  .input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #e74c3c;
+  }
+
+  &:focus-within {
+    .label {
+      color: red;
+    }
+  }
+}

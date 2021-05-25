@@ -1,7 +1,4 @@
-# ChatBox
-My own messaging app.
+cp -n ../React-modele/{.*,*} .
 
-/!\ Work in Progress /!\
+cp -rn ../React-modele/{src,config,public} .
 
-Front: React-Redux-Axios
-Back: NodeJs-Express4-Jwt

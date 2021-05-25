@@ -1,0 +1,43 @@
+@use 'src/styles/vars';
+
+.form {
+  margin: auto;
+  background-color: vars.$verylight-blue;
+  border-radius: 15px;
+  margin-top: 1%;
+  padding: 10px 32px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  
+
+  .form-input {
+    height: 1rem;
+    width: 90%;
+    padding: 1rem;
+    border-radius: 15px;
+    font-size: 18px;
+    color: #555;
+    outline: none;
+    border: 1px solid vars.$light-blue;
+  }
+
+  .send-button {
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px 15px;
+    height: 35px;
+    border-radius: 15px;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    background: linear-gradient(to bottom, #ffe299 5%, #ffc685 100%);
+    border: 1px solid #ffc685;
+    display: inline-block;
+    font-size: 16px;
+    max-width: max-content;
+    margin-left: 5px;
+  }
+
+}
