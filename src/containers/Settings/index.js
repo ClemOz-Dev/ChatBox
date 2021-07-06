@@ -2,12 +2,13 @@ import { connect } from 'react-redux';
 
 import Settings from 'src/components/Settings';
 
-import { submitLogin, updateField } from 'src/actions/auth';
+import { submitLogin, updateField, setErrorMessage } from 'src/actions/auth';
 
 const mapStateToProps = (state) => (
   {
     email: state.auth.email,
     password: state.auth.password,
+    errorMessage: state.auth.errorMessage,
   }
 );
 
@@ -20,6 +21,11 @@ const mapDispatchToProps = (dispatch) => ({
 
   updateField: (identifier, newValue) => {
     const action = (updateField(identifier, newValue));
+    dispatch(action);
+  },
+
+  setErrorMessage: (message) => {
+    const action = (setErrorMessage(message));
     dispatch(action);
   },
 

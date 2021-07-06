@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => ({
   setErrorMessage: (message) => {
     const action = (setErrorMessage(message));
     dispatch(action);
-  }
+  },
 
 });
 

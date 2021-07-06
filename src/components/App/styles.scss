@@ -1,7 +1,16 @@
 .app {
-  width: 95vw;
+  width: 100vw;
   height: 100vh;
   margin: auto;
   text-align: center;
   overflow: hidden;
+  background-image: url('../../assets/Quantum-Gradient.svg');
+  background-size: cover;
+}
+
+
+@media screen and (min-width: 770px) {
+ .app{
+  width: 700px;
+ }
 }

@@ -1,38 +1,48 @@
 import React, { useState } from 'react';
-import validator from 'validator'
+import { NavLink } from 'react-router-dom';
+import validator from 'validator';
 import Popup from 'reactjs-popup';
 
 import Field from 'src/components/Field';
 import './settingsRegistration.scss';
 import logo from 'src/assets/Chatbox.svg';
 
-const SettingsRegistration = ({ email, password, nickname, submitForm, updateField, errorMessage, setErrorMessage }) => {
+const SettingsRegistration = ({
+  email,
+  password,
+  nickname,
+  submitForm,
+  updateField,
+  errorMessage,
+  setErrorMessage }) => {
   const [open, setOpen] = useState(false);
 
   const closeModal = () => {
     setOpen(false);
     setErrorMessage('');
-  }
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (validator.isStrongPassword(password, {
-      minLength: 8, minLowercase: 1,
-      minUppercase: 1, minNumbers: 1, minSymbols: 1
+      minLength: 8,
+      minLowercase: 1,
+      minUppercase: 1,
+      minNumbers: 1,
+      minSymbols: 1,
     })) {
       submitForm();
     } else {
-      /*  setOpen(o => !o); */
-      setErrorMessage("Mot de passe: au moins 8 caractères, dont 1 chiffre, 1 majuscule, 1 minuscule, 1 caractère spécial")
+      setErrorMessage('Mot de passe: au moins 8 caractères, dont 1 chiffre, 1 majuscule, 1 minuscule, 1 caractère spécial')
     }
     if (!errorMessage) {
-      setOpen(o => !o);
+      setOpen((o) => !o);
     }
   };
 
   return (
     <div className="settingsRegistration">
-      <img className="settingsRegistration--logo" src={logo} />
+      <img className="settingsRegistration--logo" src={logo} alt="cut cat" />
       <form
         className="settingsRegistration--loginForm"
         onSubmit={handleSubmit}
@@ -61,7 +71,7 @@ const SettingsRegistration = ({ email, password, nickname, submitForm, updateFie
         <Popup open={open} closeOnDocumentClick onClose={closeModal}>
           <div className="modal">
             <a className="close" onClick={closeModal}>&times;
-          </a>{errorMessage}
+            </a>{errorMessage}
           </div>
         </Popup>
 
@@ -76,11 +86,11 @@ const SettingsRegistration = ({ email, password, nickname, submitForm, updateFie
           }}
         />
         <button className="settingsRegistration--button" type="submit">Envoyer</button>
-        <p className="settingsRegistration--ToRegister">Déjà inscrit ? Connecte toi !</p>
+        <NavLink to="/" className="settingsRegistration--ToLogin">Déjà inscrit ? Connecte-toi !</NavLink>
       </form>
 
     </div>
-  )
+  );
 };
 
 export default SettingsRegistration;

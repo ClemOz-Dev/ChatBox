@@ -1,13 +1,15 @@
 import React from 'react';
 import classNames from 'classnames';
 
-const Message = ({ sender, content, own }) => {
+const Message = ({ fromId, fromNickname, content,currentId }) => {
+  console.log(currentId);  
   const cssClass = classNames('message', {
-    'message--own': own == sender ,
+    'message--own': currentId == fromId ,
   }); 
+  
   return (
     <div className={cssClass}>
-      <h3 className="message--from">{sender}</h3>
+      <h3 className="message--from">{fromNickname}</h3>
       <p className="message--content">{content}</p>
     </div>
   )

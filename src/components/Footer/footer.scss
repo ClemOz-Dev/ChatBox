@@ -2,6 +2,7 @@
 
 .footer {  
   width: 95%;
+  
   height: 5%;
   margin: auto;
   position: fixed;
@@ -18,3 +19,10 @@
     line-height: 30px;
   }
 }
+
+
+@media screen and (min-width: 770px) {
+  .footer{
+   width: 700px;
+  }
+ }

@@ -1,12 +1,14 @@
 import {
   CONNECT_USER,
+  DISCONNECT_USER,
   UPDATE_FIELD,
   SET_ERROR_MESSAGE,
 } from 'src/actions/auth';
 
 const initialState = {
+  isConnected: false,
   id: '',
-  nickname: '',
+  nickname: 'Visiteur',
   email: '',
   password: '',
   errorMessage: '',
@@ -14,14 +16,24 @@ const initialState = {
 
 function authReducer(state = initialState, action) {
   switch (action.type) {
-
     case CONNECT_USER:
       // console.log('action', action);
       return {
         ...state,
         password: '',
         nickname: action.nickname,
-        id: action.id
+        id: action.id,
+        isConnected: true,
+      };
+
+    case DISCONNECT_USER:
+      // console.log('action', action);
+      return {
+        ...state,
+        password: '',
+        nickname: 'Visiteur',
+        id: '',
+        isConnected: false,
       };
 
     case SET_ERROR_MESSAGE:
@@ -51,7 +63,6 @@ function authReducer(state = initialState, action) {
           nickname: action.newValue,
         };
       }
-
     default:
       return state;
   }

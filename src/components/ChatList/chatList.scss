@@ -8,23 +8,6 @@
   background-color: rgba(0, 0, 0, 0.6);
   padding: 0.8rem;
   transition: all 0.8s; 
-
-  .settings--toggle {
-    background-color: #fff;
-    color: vars.$light-blue;
-    border: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    font-size: 1.8rem;
-    line-height: 30px;
-    transform: rotate(0deg);
-    transition: transform 0.8s;
-
-    &.settings--toggle-open {
-      transform: rotate(45deg);
-    }
-  }
 }
 
 .chatCard {

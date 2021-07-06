@@ -18,14 +18,12 @@ const authMiddleware = (store) => (next) => (action) => {
         password: state.auth.password,
       })
         .then((response) => {
-          if (response.status === 200) {
-            window.localStorage.setItem("token", response.data.token);
-            store.dispatch(connectUser(response.data.id, response.data.nickname));
-            window.location = "/inscription"
-          }
+          // console.log(response);
+          store.dispatch(connectUser(response.data.id, response.data.nickname));
         })
         .catch((error) => {
-          console.log(error.response);
+          // console.log(error.response);
+          store.dispatch(setErrorMessage(error.response.data.message));
         });
       next(action);
       break;
@@ -34,11 +32,13 @@ const authMiddleware = (store) => (next) => (action) => {
       axios.post('http://localhost:3000/inscription', {
         email: state.auth.email,
         password: state.auth.password,
-        nickname: state.auth.nickname
+        nickname: state.auth.nickname,
       })
         .then((response) => {
-          console.log(response);
-
+          // console.log(response);
+          if (response.status === 200) {
+            window.location = '/';
+          }
         })
         .catch((error) => {
           console.log(error.response.data.message);

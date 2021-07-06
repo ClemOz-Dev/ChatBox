@@ -3,12 +3,13 @@ import { NavLink } from 'react-router-dom'
 
 import './footer.scss';
 
-const Footer = () => (
+const Footer = ({ isConnected }) => (
   <div className="footer">
-    <NavLink to="/membres">Membres</NavLink>
-    <NavLink to="/conversations">Conversations</NavLink>
-    <NavLink to="/profil">Profil</NavLink>
-    <NavLink to="/deconnexion">Déconnexion</NavLink>
+    {isConnected && <NavLink to="/membres">Membres</NavLink>}
+    {!isConnected && <NavLink to="/">Se connecter</NavLink>}
+    {!isConnected && <NavLink to="/inscription">S'inscrire</NavLink>}
+    {isConnected && <NavLink to="/conversations">Conversations</NavLink>}
+    {isConnected && <NavLink to="/deconnexion">Déconnexion</NavLink>}
   </div>
 );
 
