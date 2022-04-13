@@ -1,0 +1,50 @@
+@use 'src/styles/vars';
+
+.settings {
+  position: fixed;
+  top: 1em;
+  right: -255px;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.8rem;
+  display: flex;
+  transition: right 0.8s;
+
+  &.settings--open {
+    right: 2em;
+  }
+
+  .settings-toggle {
+    background-color: #fff;
+    color: vars.$lightColor;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    line-height: 30px;
+    transform: rotate(0deg);
+    transition: transform 0.8s;
+    
+    &.settings-toggle-open {
+      transform: rotate(45deg);
+    }
+  }
+
+  .settings-form {
+    background-color: #fff;
+    padding: 1em;
+    margin-left: 0.8em;
+    display: flex;
+    flex-direction: column;
+    width: 240px;
+
+    .settings-submit {
+      background-color: vars.$darkColor;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 1rem;
+      font-size: 1.2em;
+    }
+  }
+}

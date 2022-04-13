@@ -1,0 +1,53 @@
+@use 'src/styles/vars';
+
+.messages {
+  padding: 2em;
+  margin-bottom: vars.$inputHeight;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+
+  .message {
+    margin-bottom: 2rem;
+
+    .message-author {
+      padding-right: 1.2rem;
+    }
+
+    &.message--own .message-author {
+      text-align: right;
+    }
+
+    .message-content {
+      padding: 1.2rem 1.3rem;
+      margin-top: 0.8rem;
+      color: vars.$messageColor;
+      background-color: vars.$messageBackground;
+      border-radius: 1.6rem;
+      position: relative;
+
+      &:before {
+        content: '';
+        width: 0;
+        height:0;
+        border-bottom: 20px solid vars.$messageBackground;
+        border-left: 25px solid transparent;
+        position: absolute;
+        margin-top: -1.9rem;
+      }
+    }
+
+    &.message--own {
+      .message-content {
+        &:before {
+          right: 2em;
+          border-left: none;
+          border-right: 25px solid transparent;
+        }
+      }
+    }
+  }
+}
