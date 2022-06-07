@@ -1,6 +1,8 @@
 # ChatBox
 My own chat app.
 
-# FRONT: React-Redux-Axios
+# FRONT:
+ React-Redux-Axios
 
-# BACK: NodeJs-Express4-Jwt
+# BACK:
+ NodeJs-Express4-Jwt
